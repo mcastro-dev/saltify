@@ -2,6 +2,6 @@ package com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.mod
 
 data class Album(
     val title: String,
-    val image: Image,
+    val images: List<Image>,
     val artist: Artist
 )

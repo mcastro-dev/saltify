@@ -3,5 +3,5 @@ package com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remot
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.model.Album
 
 interface AlbumsRemoteDataSource {
-    suspend fun getTopAlbums(): List<Album>
+    suspend fun getTopAlbums(limit: Int): List<Album>
 }
