@@ -9,6 +9,6 @@ fun AlbumsScreen() {
 }
 
 @Composable
-fun AlbumsContent() {
+private fun AlbumsContent() {
     Text("Albums")
 }
