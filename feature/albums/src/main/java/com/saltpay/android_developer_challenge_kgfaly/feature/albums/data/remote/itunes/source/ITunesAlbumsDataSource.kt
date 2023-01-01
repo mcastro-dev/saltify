@@ -2,8 +2,9 @@ package com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remot
 
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote.AlbumsRemoteDataSource
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.model.Album
+import javax.inject.Inject
 
-class iTunesAlbumsDataSource(
+class iTunesAlbumsDataSource @Inject constructor(
     private val albumsApi: iTunesAlbumsApi
 ) : AlbumsRemoteDataSource {
 
