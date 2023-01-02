@@ -9,8 +9,8 @@ class iTunesAlbumsDataSource @Inject constructor(
 ) : AlbumsRemoteDataSource {
 
     override suspend fun getTopAlbums(limit: Int): List<Album> {
-        val feed = albumsApi.getTopAlbumsFeed(limit = limit)
-        return feed.albums.map {
+        val response = albumsApi.getTopAlbumsFeed(limit = limit)
+        return response.feed.albums.map {
             it.toDomain()
         }
     }

@@ -4,5 +4,5 @@ import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.mode
 import kotlinx.coroutines.flow.Flow
 
 interface AlbumsRepository {
-    fun getTopAlbums(limit: Int): Flow<Result<List<Album>>>
+    suspend fun getTopAlbums(limit: Int): Result<List<Album>>
 }

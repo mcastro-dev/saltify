@@ -6,14 +6,18 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 interface GetTopAlbumsUseCase {
-    fun invoke(): Flow<Result<List<Album>>>
+    suspend operator fun invoke(): Result<List<Album>>
 }
 
 class GetTopAlbumsUseCaseImpl @Inject constructor(
     private val albumsRepository: AlbumsRepository
 ) : GetTopAlbumsUseCase {
 
-    override fun invoke(): Flow<Result<List<Album>>> {
-        TODO("Not yet implemented")
+    companion object {
+        const val LIMIT = 100
+    }
+
+    override suspend fun invoke(): Result<List<Album>> {
+        return albumsRepository.getTopAlbums(LIMIT)
     }
 }

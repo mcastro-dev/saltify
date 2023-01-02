@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.saltpay.android_developer_challenge_kgfaly.network'
+    namespace 'com.saltpay.core.presentation'
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
@@ -33,10 +33,8 @@ android {
 }
 
 dependencies {
-    api "com.squareup.retrofit2:retrofit:$retrofit_version"
-    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_interceptor_version"
+    api "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose_version"
+    implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 }
