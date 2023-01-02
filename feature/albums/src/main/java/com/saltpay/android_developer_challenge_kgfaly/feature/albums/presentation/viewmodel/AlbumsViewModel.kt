@@ -17,6 +17,10 @@ class AlbumsViewModel @Inject constructor(
     private val getTopAlbumsUseCase: GetTopAlbumsUseCase
 ) : BaseViewModel<UIAlbumsState>(UIAlbumsState()) {
 
+    init {
+        onGetTopAlbumsEvent()
+    }
+
     override fun onEvent(event: UIEvent) {
         when(event) {
             is GetTopAlbumsEvent -> onGetTopAlbumsEvent()
