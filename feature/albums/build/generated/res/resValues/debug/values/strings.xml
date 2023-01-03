@@ -1,0 +1,4 @@
+<resources>
+    <string name="error_unreachable_server">Ops! Could not retrieve the albums. Make sure you are connected to the internet.</string>
+    <string name="error_default">Ops! Something unexpected happened.</string>
+</resources>

@@ -1,4 +1,4 @@
-package com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation
+package com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.composable
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize

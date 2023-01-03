@@ -7,6 +7,8 @@ import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.repository.AlbumsRepository
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.usecase.GetTopAlbumsUseCase
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.usecase.GetTopAlbumsUseCaseImpl
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.usecase.RefreshTopAlbumsUseCase
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.usecase.RefreshTopAlbumsUseCaseImpl
 import com.saltpay.network.RestApiProvider
 import dagger.Binds
 import dagger.Module
@@ -35,4 +37,7 @@ abstract class AlbumsModule {
 
     @Binds
     abstract fun bindGetTopAlbumsUseCase(impl: GetTopAlbumsUseCaseImpl) : GetTopAlbumsUseCase
+
+    @Binds
+    abstract fun bindRefreshTopAlbumsUseCase(impl: RefreshTopAlbumsUseCaseImpl) : RefreshTopAlbumsUseCase
 }

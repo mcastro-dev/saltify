@@ -3,3 +3,4 @@ package com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentati
 import com.saltpay.core.presentation.UIEvent
 
 class GetTopAlbumsEvent : UIEvent
+class RefreshEvent : UIEvent
