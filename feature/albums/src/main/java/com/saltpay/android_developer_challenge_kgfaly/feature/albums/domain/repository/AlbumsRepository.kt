@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface AlbumsRepository {
     suspend fun getTopAlbums(limit: Int = 100): Result<List<Album>>
+    suspend fun getTopAlbumsByTitle(query: String, limit: Int = 100): Result<List<Album>>
 }

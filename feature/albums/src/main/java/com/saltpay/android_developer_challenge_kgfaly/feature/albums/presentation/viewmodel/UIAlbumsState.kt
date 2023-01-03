@@ -6,6 +6,8 @@ import com.saltpay.core.presentation.UIState
 data class UIAlbumsState(
     val isLoading: Boolean = false,
     val isRefreshing: Boolean = false,
+    val isSearching: Boolean = false,
+    val searchText: String = "",
     val albums: List<Album> = emptyList(),
     val error: Throwable? = null,
 ) : UIState

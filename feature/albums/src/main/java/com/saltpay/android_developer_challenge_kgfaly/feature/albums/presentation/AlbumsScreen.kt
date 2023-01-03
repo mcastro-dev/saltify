@@ -9,19 +9,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.composable.AlbumListItem
-import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.composable.Error
-import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.viewmodel.AlbumsViewModel
-import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.viewmodel.RefreshEvent
-import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.viewmodel.UIAlbumsState
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.R
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.composable.*
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.viewmodel.*
 
 @Composable
 fun AlbumsScreen(
@@ -30,28 +27,30 @@ fun AlbumsScreen(
     val uiState by viewModel.uiState.collectAsState()
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                contentPadding = PaddingValues(horizontal = 8.dp)
-            ) {
-                Text(text = "SaltPay", style = typography.h6)
-            }
-        }
+        topBar = { AlbumsTopAppBar() }
     ) { paddingValues ->
-        Box(
+
+        AlbumsContent(
+            uiState = uiState,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues)
-        ) {
-            if (uiState.isLoading) {
-                Loading()
-            } else {
-                AlbumsContent(
-                    uiState = uiState,
-                    onRefresh = { viewModel.onEvent(RefreshEvent()) }
-                )
-            }
-        }
+                .padding(paddingValues),
+            onRefresh = { viewModel.onEvent(RefreshEvent()) },
+            onSearchTextChanged = { viewModel.onEvent(SearchTopAlbumsEvent(it)) },
+            onClearSearch = { viewModel.onEvent(ClearSearchEvent()) }
+        )
+    }
+}
+
+@Composable
+private fun AlbumsTopAppBar() {
+    TopAppBar(
+        contentPadding = PaddingValues(horizontal = 8.dp)
+    ) {
+        Text(
+            text = stringResource(id = R.string.albums_screen_title),
+            style = typography.h6
+        )
     }
 }
 
@@ -59,7 +58,10 @@ fun AlbumsScreen(
 @Composable
 private fun AlbumsContent(
     uiState: UIAlbumsState,
-    onRefresh: (() -> Unit)
+    modifier: Modifier = Modifier,
+    onRefresh: (() -> Unit) = {},
+    onSearchTextChanged: ((String) -> Unit) = {},
+    onClearSearch: (() -> Unit) = {}
 ) {
     val refreshState = rememberPullRefreshState(
         refreshing = uiState.isRefreshing,
@@ -67,22 +69,25 @@ private fun AlbumsContent(
     )
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .pullRefresh(refreshState)
     ) {
-        uiState.error?.let {
-            Error(it)
-        }
-
-        LazyColumn(
-            contentPadding = PaddingValues(horizontal = 4.dp, vertical = 8.dp)
+        Column(
+            modifier = Modifier.fillMaxSize()
         ) {
-            items(
-                items = uiState.albums,
-                key = { it.id },
-                itemContent = { AlbumListItem(album = it) }
+            SearchBar(
+                searchText = uiState.searchText,
+                placeholderText = stringResource(id = R.string.search_placeholder),
+                onSearchTextChanged = onSearchTextChanged,
+                onClearClicked = onClearSearch
             )
+
+            if (uiState.isLoading) {
+                Loading()
+            } else {
+                AlbumsList(uiState)
+            }
         }
 
         PullRefreshIndicator(
@@ -90,12 +95,5 @@ private fun AlbumsContent(
             state = refreshState,
             modifier = Modifier.align(Alignment.TopCenter)
         )
-    }
-}
-
-@Composable
-private fun Loading() {
-    Box(modifier = Modifier.fillMaxSize()) {
-        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
     }
 }

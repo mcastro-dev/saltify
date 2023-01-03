@@ -3,7 +3,6 @@ package com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.use
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.model.Album
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.repository.AlbumsRepository
 import com.saltpay.core.domain.CoroutineUseCase
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 interface GetTopAlbumsUseCase : CoroutineUseCase<List<Album>>

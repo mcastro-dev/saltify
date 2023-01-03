@@ -23,7 +23,7 @@ fun AlbumListItem(album: Album) {
             .padding(horizontal = 8.dp, vertical = 6.dp)
             .fillMaxWidth(),
         elevation = 2.dp,
-        shape = RoundedCornerShape(corner = CornerSize(16.dp))
+        shape = RoundedCornerShape(corner = CornerSize(12.dp))
     ) {
         Row {
             AlbumImage(album)
@@ -35,9 +35,15 @@ fun AlbumListItem(album: Album) {
             ) {
                 Text(
                     text = album.title,
-                    maxLines = 2,
+                    maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     style = typography.body1
+                )
+                Text(
+                    text = album.artist.name,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    style = typography.body2
                 )
             }
         }
@@ -51,7 +57,7 @@ private fun AlbumImage(album: Album) {
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier
-            .size(84.dp)
-            .clip(RoundedCornerShape(corner = CornerSize(16.dp)))
+            .size(90.dp)
+            .clip(RoundedCornerShape(corner = CornerSize(12.dp)))
     )
 }
