@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.saltpay.android_developer_challenge_kgfaly.network'
+    namespace 'com.saltpay.core.infrastructure'
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {

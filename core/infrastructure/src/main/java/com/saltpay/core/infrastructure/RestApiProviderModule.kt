@@ -1,4 +1,4 @@
-package com.saltpay.network
+package com.saltpay.core.infrastructure
 
 import dagger.Module
 import dagger.Provides

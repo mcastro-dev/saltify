@@ -8,12 +8,11 @@ import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote.itunes.source.iTunesAlbumsDataSource
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.repository.AlbumsRepository
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.usecase.*
-import com.saltpay.network.RestApiProvider
+import com.saltpay.core.infrastructure.RestApiProvider
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 

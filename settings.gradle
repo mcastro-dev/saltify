@@ -15,6 +15,6 @@ dependencyResolutionManagement {
 rootProject.name = "android-developer-challenge-kgfaly"
 include ':app'
 include ':feature:albums'
-include ':network'
 include ':core:presentation'
 include ':core:domain'
+include ':core:infrastructure'

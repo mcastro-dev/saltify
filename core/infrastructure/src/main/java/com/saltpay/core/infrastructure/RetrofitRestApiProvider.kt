@@ -1,8 +1,5 @@
-package com.saltpay.network
+package com.saltpay.core.infrastructure
 
-import com.saltpay.android_developer_challenge_kgfaly.network.BuildConfig
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -11,15 +8,8 @@ class RetrofitRestApiProvider(
 ) : RestApiProvider {
 
     private val retrofit: Retrofit by lazy {
-        val clientBuilder = OkHttpClient.Builder().apply {
-            if (BuildConfig.DEBUG) {
-                addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
-            }
-        }
-
         Retrofit.Builder()
             .baseUrl(url)
-            .client(clientBuilder.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
