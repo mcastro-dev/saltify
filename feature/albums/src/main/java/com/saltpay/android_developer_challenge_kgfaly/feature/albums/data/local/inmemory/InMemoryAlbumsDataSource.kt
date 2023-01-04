@@ -12,6 +12,12 @@ class InMemoryAlbumsDataSource @Inject constructor() : AlbumsLocalDataSource {
         return topAlbums.take(limit)
     }
 
+    override suspend fun getAlbumById(id: String): Album? {
+        return topAlbums.firstOrNull { album ->
+            album.id == id
+        }
+    }
+
     override suspend fun saveTopAlbums(albums: List<Album>) {
         topAlbums.addAll(albums)
     }

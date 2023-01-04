@@ -5,4 +5,5 @@ import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.mode
 interface AlbumsRepository {
     suspend fun getTopAlbums(limit: Int): Result<List<Album>>
     suspend fun getTopAlbumsByTitle(query: String, limit: Int): Result<List<Album>>
+    suspend fun getAlbumById(id: String): Result<Album>
 }

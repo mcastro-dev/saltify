@@ -13,6 +13,7 @@ import org.junit.Test
 import org.mockito.kotlin.*
 import java.net.SocketException
 import java.net.UnknownHostException
+import java.time.LocalDate
 
 class AlbumsRepositoryTest {
 
@@ -69,8 +70,8 @@ class AlbumsRepositoryTest {
     @Test
     fun `when getTopAlbumsByTitle, then get local data and filter by title, return filtered albums`() = runBlocking {
         val albums: List<Album> = listOf(
-            Album("1", "Some Testing Album", emptyList(), Artist("Artist")),
-            Album("2", "Another Album", emptyList(), Artist("Artist")),
+            Album("1", "Some Testing Album", emptyList(), Artist("Artist"), "", LocalDate.now()),
+            Album("2", "Another Album", emptyList(), Artist("Artist"), "", LocalDate.now()),
         )
         given(localDataSource.getTopAlbums(any())).willReturn(albums)
 

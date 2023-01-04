@@ -2,6 +2,7 @@ package com.saltpay.android_developer_challenge_kgfaly.feature.albums.data
 
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.local.AlbumsLocalDataSource
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote.AlbumsRemoteDataSource
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.error.NoAlbumFoundException
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.model.Album
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.repository.AlbumsRepository
 import com.saltpay.core.domain.error.UnableToReachServerException
@@ -37,5 +38,11 @@ class AlbumsRepositoryImpl @Inject constructor(
         }
 
         return Result.success(filteredAlbums)
+    }
+
+    override suspend fun getAlbumById(id: String): Result<Album> {
+        return localDataSource.getAlbumById(id)?.let { album ->
+            Result.success(album)
+        } ?: Result.failure(NoAlbumFoundException())
     }
 }

@@ -5,6 +5,7 @@ import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.mode
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.usecase.GetTopAlbumsUseCase
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.usecase.RefreshTopAlbumsUseCase
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.usecase.SearchTopAlbumsUseCase
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.list.viewmodel.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
@@ -15,6 +16,7 @@ import org.mockito.BDDMockito.given
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.willReturn
+import java.time.LocalDate
 
 @ExperimentalCoroutinesApi
 class AlbumsViewModelTest : ViewModelBaseTest() {
@@ -48,7 +50,7 @@ class AlbumsViewModelTest : ViewModelBaseTest() {
     @Test
     fun `when GetTopAlbumsEvent on init, then uiState transitions correctly with the albums data`() = runTest {
         val albums = listOf(
-            Album("1", "Some Testing Album", emptyList(), Artist("Artist")),
+            Album("1", "Some Testing Album", emptyList(), Artist("Artist"), "", LocalDate.now()),
         )
         initViewModel {
             given(getTopAlbumsUseCase.invoke()).willReturn {
@@ -76,7 +78,7 @@ class AlbumsViewModelTest : ViewModelBaseTest() {
     @Test
     fun `when RefreshEvent, then uiState transitions correctly with the albums data`() = runTest {
         val albums = listOf(
-            Album("1", "Some Testing Album", emptyList(), Artist("Artist")),
+            Album("1", "Some Testing Album", emptyList(), Artist("Artist"), "", LocalDate.now()),
         )
         initViewModel {
             given(getTopAlbumsUseCase.invoke()).willReturn {
@@ -115,11 +117,11 @@ class AlbumsViewModelTest : ViewModelBaseTest() {
     @Test
     fun `when SearchTopAlbumsEvent, then uiState transitions correctly with the albums data`() = runTest {
         val albums = listOf(
-            Album("1", "Some Testing Album", emptyList(), Artist("Artist")),
-            Album("2", "Some Other Album", emptyList(), Artist("Artist")),
+            Album("1", "Some Testing Album", emptyList(), Artist("Artist"), "", LocalDate.now()),
+            Album("2", "Some Other Album", emptyList(), Artist("Artist"), "", LocalDate.now()),
         )
         val searchedAlbums = listOf(
-            Album("2", "Some Other Album", emptyList(), Artist("Artist")),
+            Album("2", "Some Other Album", emptyList(), Artist("Artist"), "", LocalDate.now()),
         )
         val searchTerm = "other"
         initViewModel {
@@ -159,8 +161,8 @@ class AlbumsViewModelTest : ViewModelBaseTest() {
     @Test
     fun `when ClearSearchEvent, then uiState transitions correctly with the albums data`() = runTest {
         val albums = listOf(
-            Album("1", "Some Testing Album", emptyList(), Artist("Artist")),
-            Album("2", "Some Other Album", emptyList(), Artist("Artist")),
+            Album("1", "Some Testing Album", emptyList(), Artist("Artist"), "", LocalDate.now()),
+            Album("2", "Some Other Album", emptyList(), Artist("Artist"), "", LocalDate.now()),
         )
         initViewModel {
             given(getTopAlbumsUseCase.invoke()).willReturn {

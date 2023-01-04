@@ -4,6 +4,7 @@ import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.mode
 
 interface AlbumsLocalDataSource {
     suspend fun getTopAlbums(limit: Int): List<Album>
+    suspend fun getAlbumById(id: String): Album?
     suspend fun saveTopAlbums(albums: List<Album>)
     suspend fun deleteAllTopAlbums()
 }

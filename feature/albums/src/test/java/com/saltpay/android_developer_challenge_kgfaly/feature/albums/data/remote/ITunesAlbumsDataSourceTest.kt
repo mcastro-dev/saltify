@@ -13,6 +13,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.*
 import java.net.SocketException
+import java.time.LocalDate
 
 class ITunesAlbumsDataSourceTest {
 
@@ -30,8 +31,8 @@ class ITunesAlbumsDataSourceTest {
         val response = Response(
             feed = Feed(
                 albums = listOf(
-                    Album(id = "1", name = "Album 1", images = emptyList(), artist = Artist("Artist")),
-                    Album(id = "2", name = "Album 2", images = emptyList(), artist = Artist("Artist")),
+                    Album(id = "1", name = "Album 1", images = emptyList(), artist = Artist("Artist"), link = "", releaseDate = LocalDate.now()),
+                    Album(id = "2", name = "Album 2", images = emptyList(), artist = Artist("Artist"), link = "", releaseDate = LocalDate.now()),
                 )
             )
         )

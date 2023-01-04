@@ -49,4 +49,7 @@ abstract class AlbumsModule {
 
     @Binds
     abstract fun bindGetAlbumsLimitUseCase(impl: GetAlbumsLimitUseCaseImpl) : GetAlbumsLimitUseCase
+
+    @Binds
+    abstract fun bindGetAlbumByIdUseCase(impl: GetAlbumByIdUseCaseImpl) : GetAlbumByIdUseCase
 }

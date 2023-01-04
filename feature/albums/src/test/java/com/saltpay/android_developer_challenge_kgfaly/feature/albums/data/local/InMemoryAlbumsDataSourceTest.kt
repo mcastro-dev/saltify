@@ -7,12 +7,13 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
+import java.time.LocalDate
 
 class InMemoryAlbumsDataSourceTest {
 
     private val fakeAlbums: List<Album> = listOf(
-        Album("1", "Some Testing Album", emptyList(), Artist("Artist")),
-        Album("2", "Another Album", emptyList(), Artist("Artist")),
+        Album("1", "Some Testing Album", emptyList(), Artist("Artist"), "", LocalDate.now()),
+        Album("2", "Another Album", emptyList(), Artist("Artist"), "", LocalDate.now()),
     )
 
     private lateinit var sut: InMemoryAlbumsDataSource

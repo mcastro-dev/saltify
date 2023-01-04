@@ -1,4 +1,4 @@
-package com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.composable
+package com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.list.composable
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn

@@ -1,4 +1,4 @@
-package com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.viewmodel
+package com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.list.viewmodel
 
 import com.saltpay.core.presentation.UIEvent
 

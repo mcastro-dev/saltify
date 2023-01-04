@@ -1,4 +1,4 @@
-package com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation
+package com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.list
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -14,12 +14,16 @@ import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.R
-import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.composable.*
-import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.viewmodel.*
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.list.composable.AlbumsList
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.list.composable.Loading
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.list.composable.SearchBar
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.list.viewmodel.*
 
 @Composable
-fun AlbumsScreen(
+fun AlbumsListScreen(
+    navController: NavController? = null,
     viewModel: AlbumsViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -33,6 +37,7 @@ fun AlbumsScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues),
+            navController = navController,
             onRefresh = { viewModel.onEvent(RefreshEvent()) },
             onSearchTextChanged = { viewModel.onEvent(SearchTopAlbumsEvent(it)) },
             onClearSearch = { viewModel.onEvent(ClearSearchEvent()) }
@@ -57,6 +62,7 @@ private fun AlbumsTopAppBar() {
 private fun AlbumsContent(
     uiState: UIAlbumsState,
     modifier: Modifier = Modifier,
+    navController: NavController? = null,
     onRefresh: (() -> Unit) = {},
     onSearchTextChanged: ((String) -> Unit) = {},
     onClearSearch: (() -> Unit) = {}
@@ -84,7 +90,12 @@ private fun AlbumsContent(
             if (uiState.isLoading) {
                 Loading()
             } else {
-                AlbumsList(uiState)
+                AlbumsList(
+                    uiState = uiState,
+                    onAlbumClicked = {
+                        navController?.navigate("album_detail_screen/${it.id}")
+                    }
+                )
             }
         }
 

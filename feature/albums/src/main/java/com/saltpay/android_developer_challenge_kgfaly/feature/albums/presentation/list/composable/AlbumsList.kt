@@ -1,4 +1,4 @@
-package com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.composable
+package com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.list.composable
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -8,11 +8,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.viewmodel.UIAlbumsState
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.model.Album
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.presentation.list.viewmodel.UIAlbumsState
 
 @Composable
 fun AlbumsList(
     uiState: UIAlbumsState,
+    onAlbumClicked: ((Album) -> Unit)? = null
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
         uiState.error?.let {
@@ -25,7 +27,12 @@ fun AlbumsList(
             items(
                 items = uiState.albums,
                 key = { it.id },
-                itemContent = { AlbumListItem(album = it) }
+                itemContent = {
+                    AlbumListItem(
+                        album = it,
+                        onClicked = onAlbumClicked
+                    )
+                }
             )
         }
     }

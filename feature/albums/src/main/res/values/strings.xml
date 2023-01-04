@@ -1,6 +1,10 @@
 <resources>
     <string name="albums_screen_title">SaltPay</string>
     <string name="search_placeholder">Search album</string>
+    <string name="album_link_button">iTunes link</string>
+    <string name="details_section_album">Album</string>
+    <string name="details_section_artist">Artist</string>
+    <string name="details_section_release_date">Release date</string>
     <string name="error_default">Ops! Something went wrong.</string>
     <string name="error_unreachable_server">Ops! We were unable to fetch the top albums. If you are connected to the internet our service might be temporarily out.</string>
 </resources>
