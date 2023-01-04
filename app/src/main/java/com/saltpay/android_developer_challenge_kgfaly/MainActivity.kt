@@ -28,8 +28,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AndroiddeveloperchallengekgfalyTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    modifier = Modifier.fillMaxSize()
                 ) {
                     App()
                 }
