@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class InMemoryAlbumsDataSource @Inject constructor() : AlbumsLocalDataSource {
 
-    private val topAlbums: MutableList<Album> = mutableListOf()
+    internal val topAlbums: MutableList<Album> = mutableListOf()
 
     override suspend fun getTopAlbums(limit: Int): List<Album> {
         return topAlbums.take(limit)

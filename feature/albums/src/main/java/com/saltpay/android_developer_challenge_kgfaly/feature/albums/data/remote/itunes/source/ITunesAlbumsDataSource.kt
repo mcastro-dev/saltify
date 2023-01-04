@@ -4,8 +4,8 @@ import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.model.Album
 import javax.inject.Inject
 
-class iTunesAlbumsDataSource @Inject constructor(
-    private val albumsApi: iTunesAlbumsApi
+class ITunesAlbumsDataSource @Inject constructor(
+    private val albumsApi: ITunesAlbumsApi
 ) : AlbumsRemoteDataSource {
 
     override suspend fun getTopAlbums(limit: Int): List<Album> {

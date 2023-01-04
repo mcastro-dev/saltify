@@ -1,7 +1,7 @@
-package com.saltpay.core.domain
+package com.saltpay.core.domain.usecase
 
-interface UseCase {
-    operator fun invoke()
+interface UseCase<T> {
+    operator fun invoke(): T
 }
 
 interface CoroutineUseCase<T> {

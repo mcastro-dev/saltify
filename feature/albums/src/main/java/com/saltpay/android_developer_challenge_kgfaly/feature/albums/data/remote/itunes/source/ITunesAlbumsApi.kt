@@ -4,7 +4,7 @@ import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface iTunesAlbumsApi {
+interface ITunesAlbumsApi {
 
     @GET("/us/rss/topalbums/limit={limit}/json")
     suspend fun getTopAlbumsFeed(

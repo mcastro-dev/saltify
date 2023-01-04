@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.R
-import com.saltpay.core.domain.UnableToReachServerException
+import com.saltpay.core.domain.error.UnableToReachServerException
 
 @Composable
 fun Error(error: Throwable) {

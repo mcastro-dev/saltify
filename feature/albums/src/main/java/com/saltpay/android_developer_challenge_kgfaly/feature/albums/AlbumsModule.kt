@@ -4,8 +4,8 @@ import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.Albums
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.local.AlbumsLocalDataSource
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.local.inmemory.InMemoryAlbumsDataSource
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote.AlbumsRemoteDataSource
-import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote.itunes.source.iTunesAlbumsApi
-import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote.itunes.source.iTunesAlbumsDataSource
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote.itunes.source.ITunesAlbumsDataSource
+import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote.itunes.source.ITunesAlbumsApi
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.repository.AlbumsRepository
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.usecase.*
 import com.saltpay.core.infrastructure.RestApiProvider
@@ -23,13 +23,13 @@ abstract class AlbumsModule {
     companion object {
         @Provides
         @Singleton
-        fun provideITunesAlbumsApi(restApiProvider: RestApiProvider): iTunesAlbumsApi {
-            return restApiProvider.provide(iTunesAlbumsApi::class.java)
+        fun provideITunesAlbumsApi(restApiProvider: RestApiProvider): ITunesAlbumsApi {
+            return restApiProvider.provide(ITunesAlbumsApi::class.java)
         }
     }
 
     @Binds
-    abstract fun bindAlbumsRemoteDataSource(impl: iTunesAlbumsDataSource) : AlbumsRemoteDataSource
+    abstract fun bindAlbumsRemoteDataSource(impl: ITunesAlbumsDataSource) : AlbumsRemoteDataSource
 
     @Binds
     abstract fun bindAlbumsLocalDataSource(impl: InMemoryAlbumsDataSource) : AlbumsLocalDataSource
@@ -46,4 +46,7 @@ abstract class AlbumsModule {
 
     @Binds
     abstract fun bindSearchTopAlbumsUseCase(impl: SearchTopAlbumsUseCaseImpl) : SearchTopAlbumsUseCase
+
+    @Binds
+    abstract fun bindGetAlbumsLimitUseCase(impl: GetAlbumsLimitUseCaseImpl) : GetAlbumsLimitUseCase
 }

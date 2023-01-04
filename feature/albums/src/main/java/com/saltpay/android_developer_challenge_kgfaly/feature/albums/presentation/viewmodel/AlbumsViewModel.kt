@@ -4,7 +4,6 @@ import androidx.lifecycle.viewModelScope
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.usecase.GetTopAlbumsUseCase
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.usecase.RefreshTopAlbumsUseCase
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.usecase.SearchTopAlbumsUseCase
-import com.saltpay.core.domain.UnableToReachServerException
 import com.saltpay.core.presentation.BaseViewModel
 import com.saltpay.core.presentation.PresentationModule
 import com.saltpay.core.presentation.UIEvent

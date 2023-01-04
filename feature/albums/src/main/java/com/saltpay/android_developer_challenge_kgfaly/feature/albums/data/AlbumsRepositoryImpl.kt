@@ -4,7 +4,7 @@ import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.local.
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.data.remote.AlbumsRemoteDataSource
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.model.Album
 import com.saltpay.android_developer_challenge_kgfaly.feature.albums.domain.repository.AlbumsRepository
-import com.saltpay.core.domain.UnableToReachServerException
+import com.saltpay.core.domain.error.UnableToReachServerException
 import java.net.SocketException
 import java.net.UnknownHostException
 import javax.inject.Inject
