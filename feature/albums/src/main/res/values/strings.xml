@@ -1,5 +1,5 @@
 <resources>
-    <string name="albums_screen_title">SaltPay Music</string>
+    <string name="albums_screen_title">Saltify</string>
     <string name="search_placeholder">Search album</string>
     <string name="album_link_button">iTunes link</string>
     <string name="details_section_album">Album</string>
