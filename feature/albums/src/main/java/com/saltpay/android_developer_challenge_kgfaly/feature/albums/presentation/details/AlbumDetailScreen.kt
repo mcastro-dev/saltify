@@ -92,7 +92,9 @@ private fun AlbumDetails(
     val scrollState = rememberScrollState()
 
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(scrollState)
     ) {
         Box(
             modifier = Modifier
@@ -138,7 +140,6 @@ private fun AlbumDetails(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(scrollState)
                 .padding(horizontal = 12.dp)
         ) {
             Spacer(modifier = Modifier.height(30.dp))

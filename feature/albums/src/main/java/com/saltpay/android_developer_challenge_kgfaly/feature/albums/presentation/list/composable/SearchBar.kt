@@ -43,6 +43,7 @@ fun SearchBar(
     ) {
         Card(
             modifier = Modifier
+                .weight(1.0f)
                 .padding(horizontal = 12.dp, vertical = 12.dp),
             shape = RoundedCornerShape(
                 corner = CornerSize(12.dp)
@@ -96,7 +97,9 @@ fun SearchBar(
         }
 
         IconButton(
-            modifier = Modifier.width(36.dp).align(Alignment.CenterVertically),
+            modifier = Modifier
+                .width(36.dp)
+                .align(Alignment.CenterVertically),
             onClick = { focusManager.clearFocus() }
         ) {
             Icon(
@@ -104,5 +107,6 @@ fun SearchBar(
                 contentDescription = null
             )
         }
+        Spacer(modifier = Modifier.width(10.dp))
     }
 }
